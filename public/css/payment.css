@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    max-width: auto;
+    font-size: 10px;
+}
+
+.container {
+    padding: 0;
+    margin: 0;
+    min-width: 100%;
+    height: 100%;
+}
+
+.form-input {
+    display: grid;
+    grid-template-columns: 5fr 3fr;
+    font-size: 1.6rem;
+    padding: 0 5rem;
+}
+
+.form-item {
+    margin-bottom: 2.5rem;
+}
+
+.payment-route {
+    padding-top: 5rem;
+    height: 4rem;
+    margin-bottom: 5rem;
+}
+
+.payment-route a {
+    transform: translateY(2rem);
+    text-decoration: none;
+    color: rgb(61, 54, 54);
+}
+
+.payment-route a:nth-child(2) {
+    color: #4463eb;
+}
+
+.payment-route a:hover {
+    color: #4463eb;
+}
+
+.form-info {
+    display: grid;
+    grid-template-columns: 4fr 2fr;
+    column-gap: 4rem;
+}
+
+.form-select-add {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 10px;
+}
+
+.form-control {
+    padding: 2rem 1rem;
+    font-size: 1.6rem;
+}
+
+.form-select {
+    display: block;
+    min-width: 100%;
+    max-width: 100%;
+    outline-color: #87bcf1;
+    /* max-width: 95%; */
+    padding: 0.75rem 0.5rem;
+    border-color: #ccc;
+}
+
+.form-small {
+    margin-top: 13rem;
+    margin-left: 5rem;
+    height: 51vh;
+    overflow-y: scroll;
+}
+
+.form-small::-webkit-scrollbar {
+    width: 10px;
+    height: 12px;
+}
+
+.form-small::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+}
+
+.form-name {
+    word-wrap: break;
+    padding-left: 1rem;
+}
+
+.form-name h6 {
+    font-size: 1.6rem;
+}
+
+.form-small-item {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    width: 100%;
+    height: 10rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.15px solid #eee;
+}
+
+.form-img {
+    width: 80%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: rgb(255, 255, 255);
+}
+
+.form-img img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.total-money {
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+}
+
+.checkout-btn {
+    padding-bottom: 5rem;
+}
+
+.checkout-btn button {
+    text-align: center;
+    margin-bottom: 1rem;
+    background-color: #fa3d4d;
+    border: none;
+    color: white;
+    width: 15rem;
+    border-radius: 5px;
+    padding: 2rem 2rem;
+    display: inline-block;
+}
+
+.checkout-btn a:hover {
+    text-decoration: none;
+}
+
+
+/* .form-number,
+.form-district,
+.form-wards {
+    margin-left: 2.5rem
+}
+
+ */

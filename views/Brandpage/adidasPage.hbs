@@ -1,0 +1,95 @@
+<div id="modal-mgs">
+</div>
+<div class="container">
+    <section class="section-carousel">
+        <div class="carousel">
+            <div class="carousel__item">
+                <img src="./img/barrett-ward.jpg">
+            </div>
+        </div>
+    </section>
+    <div class="main">
+      <div class="title section-title">
+          <h3 class="section-bestseller--title secondary-title">GIÀY ADIDAS</h3>
+      </div>
+      <div class="product">
+        {{#compareInt length '0'}} 
+             <div id="notfound">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <h2>
+                    Không tìm thấy sản phẩm phù hợp 
+                </h2>
+            </div>
+        {{/compareInt}}
+          {{#each Packages}}
+          <div class="product__item" onmouseover="showPurchasegoods(this)" onmouseout="hidePurchasegoods(this)">
+              <div class="product__item--img">
+                  <img src="../../image/{{this.image}}" alt="photo1" width="100%">
+              </div>
+              <div class="product__size" onmouseover="turnUp(this)" onmouseout="disappear(this)">
+                  <div class="product__size--front">
+                      <span class="product__size-item">+{{size.length}} size</span>
+                  </div>
+                   <div class="product__size--back">
+                          {{#each size}}
+                              <span class="product__size-item" onclick="chooseSize(this)">{{this}}</span>
+                          {{/each}}
+                    </div>
+              </div>
+              <div class="product__name">
+                      <a href="/shoes/{{this.shoes_id}}/detail">
+                              <p class="p-name">{{this.shoes_name}}</p>
+                      </a>
+              </div>
+              <div class="product__price">
+                  {{this.price}} đ
+              </div>
+               <div class="product__buy btn" onclick="addItem(this)">
+                      <button>
+                          Thêm vào giỏ hàng
+                      </button>
+                </div>
+                <div class="shoe_id">{{this.shoes_id}}</div>
+          </div>
+          {{/each}}
+      </div>
+      
+      <div class="Page example">
+          <ul class="pagination justify-content-center">
+
+              <li class="page-item ">
+                  <a class="page-link" href="/adidas?page={{prePage}}"><i class="fa-solid fa-angles-left"></i></a>
+              </li>
+              
+               {{#each value}}
+                <li class="page-item">              
+                    <a class="page-link page-order"
+                    href="/adidas?page={{this}}">{{this}}
+                    </a>
+                </li>
+                {{/each}}
+                <li class="page-item">
+                    ...
+                </li>
+
+                <li class="page-item" >
+                    <a class="page-link" href="/adidas?page={{total_page}}">{{total_page}}</a>
+                </li>
+                
+                <li class="page-item">
+                    <a class="page-link" href="/adidas?page={{this.nextPage}}"><i class="fa-solid fa-angles-right"></i></a>
+                </li> 
+
+          <input type="text"id="page-active" style="display:none" value ={{page}}>
+               
+          </ul>
+      </div>
+    </div>
+
+</div>
+<script>
+  
+
+
+</script>
+

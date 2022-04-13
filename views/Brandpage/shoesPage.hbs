@@ -1,0 +1,142 @@
+<header>
+    <meta charset="UTF8">
+   {{!-- <link type="text/css" rel="stylesheet" media="all" href="https://unpkg.com/xzoom/dist/xzoom.css" /> --}}
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/xzoom/dist/xzoom.min.js"></script>
+    <link rel="stylesheet" href="../../dist/xzoom.css">
+    <script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    ></script>
+    <scrip type="text/javascript" src="../../vendor/foundation.min.js"></script>
+
+</header>
+<div id="modal-mgs">
+</div>
+<div class="container">
+    <div class="detail-route">
+        <a href="/">Trang Chủ </a>>
+        <a href="/{{brand}}">{{brand}} </a> >
+        <a style="text-transform:capitalize">{{Shoes.shoes_name}}</a>
+    </div>
+    <div class="detail-container" >
+        <div class="detail-img">
+           <div class="xzoom-container">
+               <div class="xzoom-big">
+    
+                <img class="xzoom" id="xzoom-default" src="../../image/{{first}}" xoriginal="../../image/{{first}}" />
+
+                {{!-- <img class="xzoom" id="xzoom-default" src="../../dunk-high-retro-se-shoes-tXRLdK.jpg" xoriginal="../../dunk-high-retro-se-shoes-tXRLdK.jpg" /> --}}
+    
+                </div>
+                <div class="xzoom-thumbs" data-slick='{"slidesToShow": 4, "slidesToScroll": 4}'>
+    
+                    {{#each Shoes.image}}
+                    <div class="xzoom-thumbs-item"style="margin-bottom:0, padding-bottom:0"><a href="../../image/{{this}}"> <img class="xzoom-gallery" src="../../image/{{this}}" xoriginal="{{this}}" /></a></div>
+                    {{/each}}    
+                </div>
+            </div>
+       </div>
+    
+    
+        <div class="detail-content">
+            <div class="detail-item detail-name information">
+                <span style="text-transform:capitalize">Tên giày: {{Shoes.shoes_name}}</span>
+            </div>
+    
+            <div class="detail-item detail-price information">
+                <span class="price">Giá: {{Shoes.price}} VND</span>
+            </div>
+    
+            <div class="detail-item detail-size information">
+                <span>Kích thước: </span>
+                {{#each Shoes.size}}
+                <span class="info--size  {{#if @first }}size-detail-active{{/if}}" onclick ="selectSize(this)">{{this}}</span>
+                {{/each}}
+            </div>
+    
+            <div class="detail-item detail-stock information">
+    
+                <span>Còn hàng: </span>
+                {{#each Shoes.stock}}
+                <span class="stock {{#if @first }}stock-active {{/if}}">{{this}}</span>
+                {{/each}}
+                sản phẩm
+            </div>
+    
+            <div class="detail-buy" onclick="addItemDetail(this)">
+                <button type="button">
+                    Mua Ngay
+                </button>
+            </div>
+    
+            <div class="detail-contract">
+                <img class="first" src="../../img/zalopay-icon.png">
+                <img src="../../img/momo-icon.png">
+                <img src="../../img/visa-icon.png">
+                <img src="../../img/cash-icon.png">
+            </div>
+    
+            <div class="detail-review">
+                <form action="" method="get">
+                  <input type="text" placeholder="Gửi đánh giá (3 < ký tự < 20)">
+                  <button class="btn-review">Gửi đánh giá </button>
+                </form>
+    
+            </div>
+    
+          </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+
+    (function ($) {
+        $(document).ready(function() {
+
+            //defaultScale option example: -1 is -100% of initial scale, 1 is 100% of initial scale.
+            $('.xzoom, .xzoom-gallery').xzoom({zoomWidth: 400, title: true,defaultScale:-1, tint: '#333', Xoffset: 15});
+        
+            //Integration with hammer.js
+            var isTouchSupported = 'ontouchstart' in window;
+
+            if (isTouchSupported) {
+                //If touch device
+                $('.active.xzoom').each(function(){
+                    var xzoom = $(this).data('xzoom');
+                    xzoom.eventunbind();
+                });
+                
+                $('.active.xzoom').each(function() {
+                    var xzoom = $(this).data('xzoom');
+                    $(this).hammer().on("tap", function(event) {
+                        event.pageX = event.gesture.center.pageX;
+                        event.pageY = event.gesture.center.pageY;
+                        var s = 1, ls;
+        
+                        xzoom.eventmove = function(element) {
+                            element.hammer().on('drag', function(event) {
+                                event.pageX = event.gesture.center.pageX;
+                                event.pageY = event.gesture.center.pageY;
+                                xzoom.movezoom(event);
+                                event.gesture.preventDefault();
+                            });
+                        }
+        
+                        xzoom.eventleave = function(element) {
+                            element.hammer().on('tap', function(event) {
+                                xzoom.closezoom();
+                            });
+                        }
+                        xzoom.openzoom(event);
+                    });
+                });
+            }
+        
+
+        });
+})(jQuery);
+
+</script>
+
+<script src="../../javascript/shoeDetai.js"></script>

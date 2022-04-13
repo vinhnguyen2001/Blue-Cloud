@@ -1,0 +1,58 @@
+< script type = "text/javascript" >
+
+    const btnadd = document.querySelector("#btnadd");
+const form = document.querySelector(".form__add");
+
+const updateList = function() {
+    var input = document.getElementById('file');
+    var output = document.getElementById('fileList');
+
+    var temp = "";
+    for (var i = 0; i < input.files.length; ++i) {
+        temp += `${input.files.item(i).name},`;
+    }
+    output.innerText = temp.slice(0, -1);
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+    btnadd.onclick = () => {
+        form.submit();
+    };
+});
+
+<
+/script>
+
+
+{
+    {# compareString create "001" } } <
+script >
+    window.onload = function() {
+        showErrorToast("Thêm sản phẩm thất bại");
+    }; <
+/script> {
+    { /compareString}}
+
+
+
+const modal = document.querySelector('.js-modal')
+const btnExit = document.querySelector('.js-exit-btn')
+const btnEdits = document.querySelectorAll('.js-edit-order')
+const btnConfirm = document.querySelector('.js-modal__confirm')
+const modalOverlay = document.querySelector('.js-modal-overlay')
+
+
+function showEdit() {
+    modal.classList.add('open')
+}
+
+function hideEdit() {
+    modal.classList.remove('open')
+}
+
+for (const btnEdit of btnEdits) {
+    btnEdit.addEventListener('click', showEdit)
+}
+
+btnConfirm.addEventListener('click', hideEdit)
+btnExit.addEventListener('click', hideEdit)

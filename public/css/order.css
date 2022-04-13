@@ -1,0 +1,61 @@
+.content-table {
+    height: auto;
+    margin-bottom: 10rem;
+    min-width: 100%;
+    padding: 0 5rem;
+}
+
+.label {
+    font-size: 1.65rem;
+    font-weight: 700;
+    padding: 1.2rem;
+}
+
+.totalMoney {
+    width: 10rem;
+}
+
+.phoneNumber {
+    width: 15rem;
+}
+
+.table td,
+.table th {
+    padding: 1.7rem 0.75rem;
+    color: #444444;
+}
+
+.table td {
+    word-wrap: break-word;
+    min-height: 7rem;
+}
+
+.content-table .table tr {
+    padding: 15px 0;
+    border: 0.5px solid #ccc;
+}
+
+.table .thead-light th {
+    border-bottom: none;
+    background: #eee;
+}
+
+.btn-detail {
+    border: none;
+    /* transform: translateY(-0.4rem); */
+    text-align: center;
+    width: 8rem;
+}
+
+.btn-detail a {
+    border-radius: 5px;
+    position: relative;
+    background: #eee;
+    top: -0.4rem;
+    margin-bottom: 3rem;
+}
+
+.btn-detail a:hover {
+    text-decoration: none;
+    color: #e77631;
+}

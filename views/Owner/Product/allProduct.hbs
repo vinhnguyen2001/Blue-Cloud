@@ -1,0 +1,206 @@
+<div class="container">
+    <div id="modal-mgs">
+    </div>
+    <div id="toast-msg">
+    </div>
+     <div class="title section-title">
+        <h3 class="section-bestseller title secondary-title">TẤT CẢ SẢN PHẨM</h3>
+    </div>
+   
+    <div class="allproduct">
+        <div class="select">
+            <form action="/allproduct" method="post">
+            <div class="select__search">
+                 <label class="select__title"> TÌM KIẾM </label>
+                <input class="select__input select__input--search" type="search" id="search" name="search" placeholder="Search" aria-label="Search"
+                {{#if search}} value="{{search}}" {{/if}}>
+            </div>
+            <div class="select__page" style="display:none">
+                <input value="{{page}}" id="curpage" >
+            </div>
+            <div class="select__brand">
+
+                <label class="select__title"> LỌC THEO HÃNG</label>
+                {{#each brands}}
+                <div class="select--item">
+                    <input type="checkbox" name="brand" class="accept" class="select__input select__input--brand" 
+                    value="{{this.brand_id}}"
+                    {{#compareString this.active '1'}}
+                    checked ="checked"
+                    {{/compareString}}
+                    >
+                    <div class="select__brand--item">  
+                        {{this.brand_name}}
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+           
+            <div class="select__price">
+                <label class="select__title"> LỌC THEO GIÁ</label>
+                <small>(ngàn đồng)</small>
+                <div class="range">
+                    <div class="sliderValue">
+                        <span id="span-value">
+                            {{#if price}} {{price}}
+                            {{else}}
+                            5000
+                            {{/if}}</span>
+                    </div>
+                    <div class="field">
+                        <div class="value left">
+                            0</div>
+                        <input type="range" min="0" name="price" max="20000"  
+                            {{#if price}} value="{{price}}"
+                            {{else}}
+                            value="5000"
+                            {{/if}}
+                        steps="5" id="inputSlider"
+                        >
+                        <div class="value right">
+                            20000
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="select__brand">
+                <label class="select__title" style="margin-bottom:2rem"> SẮP XẾP</label>
+               <select type="text" class="form__add--brand" id="filter" name="filter" style="width:100%;padding-left:1rem">
+                    <option value="shoes_id"
+                    {{#compareString filter "shoes_id"}} selected{{/compareString}}
+                    >Mới nhất</option>
+                    <option value="shoes_name"
+                      {{#compareString filter "shoes_name"}} selected{{/compareString}}>Tên A - Z</option>
+                    <option value="price ASC"
+                      {{#compareString filter "price ASC"}} selected{{/compareString}}>Giá tiền tăng dần</option>
+                    <option value="price DESC"
+                      {{#compareString filter "price DESC"}} selected{{/compareString}}>Giá tiền giảm dần</option>
+                </select>
+            </div>
+            <div class="select__btn btn__filter">
+                <button class="btn__filter--item btn--item" type="submit">
+                    Lọc
+                </button>
+             </div>
+        </form>
+             <div class="select__btn btn__add">
+                <label class="select__title"> THÊM GIÀY MỚI</label>
+                <a href="/allproduct/add-item" target="_blank">
+                    <button class="btn__add--item btn--item">
+                        Thêm Giày
+                    </button>
+                </a>
+             </div>
+        </div>
+
+       
+       <div class="display">
+          
+            {{#if notFound}}
+            <div id="notfound">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <h2>
+                    Không tìm thấy sản phẩm phù hợp  
+                </h2>
+            </div>
+            {{else}}
+            <div class="table">
+                <table class="table__content table-bordered table-hover">
+                    <thead class="table__content-thead">
+                        <tr>
+                            <th class="label" class="label__img"scope="col">Hình ảnh</th>
+                            <th class="label item__name" scope="col">Tên giày</th>
+                            <th class="label item__brand" scope="col">Hãng</th>
+                            <th class="label item__size" scope="col">Kích thước</th>
+                            <th class="label" scope="col">Giá tiền</th>
+                            <th class="label item__stock" scope="col">Còn hàng</th>
+                            <th class="label" scope="col">Điều chỉnh</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each Packages}}
+                        <tr>
+                            <th scope="row"style="display:none">{{this.shoes_id}}</th>
+                            <td class="first" scope="row">
+                            <div class="item__img"> <img src="../../../image/{{this.image}}"  alt="photo1" width="100%"></div>
+                            </td>
+                            <td class="item__name">{{this.shoes_name}}</td>
+                            <td class="item__brand">{{this.brand_id}}</td>
+                            <td class="item__size">{{#each size}}
+                                <span>{{this}},</span>
+                            {{/each}}
+                            </td>
+                            <td>{{this.price}}</td>
+                            <td class="item__stock">
+                                {{#each stock}}
+                                <span>{{this}},</span>
+                            {{/each}}
+                            </td>
+                            <td class="edit">
+                                <a href="/allproduct/{{this.shoes_id}}/detail" target="_blank">
+                                <button class=" btn btn--edit btn--white" style ="background-color:rgb(18, 172, 18)" >
+                                    Chi tiết
+                                </button>
+                                </a>
+                                <button class=" btn btn--edit btn--white" style ="background-color:rgb(253, 93, 71)"data-toggle="modal" data-target="#removeModal"  data-name="{{this.shoes_name}}" data-id="{{this.shoes_id}}">
+                                    Xóa
+                                </button>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+       
+          <div class="page__navigation">
+                <ul class="pagination page">
+                    {{#forN total_page}}
+                    <li class="pag__item">              
+                        <a class="pag__link {{#compareInt this ../page}} pag__link--active{{/compareInt}}"
+                        href="/allproduct?page={{this}}&search={{../search}}{{../brand}}&price={{../price}}&filter={{../filter}}">{{this}}</a>
+                    </li>
+                    {{/forN}}
+                </ul>
+         </div>
+        {{/if}}
+        </div>
+        
+    
+</div>
+
+<div class="modal fade" id="removeModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border:none !important">
+      <div class="modal-header">
+        <h5 id="removeModalHead" class="modal-title" style="font-size: 20px;">Thông báo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div  id="removeModalMsg"class="modal-body" style="border-color:red;">
+        Bạn chắc chắn muốn xóa ... không
+      </div>
+      <div class="modal-footer">
+        <button id="confirmbtn"  class="btn "type="button" class="btn btn-light" style="font-size: 15px; background-color:#eee" >Xóa</button>
+        <button type="button" class="btn btn-danger" style="font-size: 15px" data-dismiss="modal">Hủy</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form name="removeForm" method="POST" action=""></form>
+
+{{#compareString del "error" }} 
+<script >
+    window.addEventListener("load",  function() {
+        showErrorToast("Xóa giày không thành công");
+    }); 
+</script> 
+{{/compareString}}
+{{#compareString del "success" }} 
+<script >
+    window.addEventListener("load",  function() {
+        showSuccessToast("Xóa giày thành công");
+    }); 
+</script> 
+{{/compareString}}

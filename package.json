@@ -1,0 +1,41 @@
+{
+    "dependencies": {
+        "bcrypt": "^5.0.1",
+        "body-parser": "^1.19.1",
+        "bootstrap-icons": "^1.8.1",
+        "cookie-parser": "^1.4.6",
+        "dotenv": "^10.0.0",
+        "express": "^4.17.2",
+        "express-handlebars": "^6.0.2",
+        "jsonwebtoken": "^8.5.1",
+        "method-override": "^3.0.0",
+        "multer": "^1.4.4",
+        "pg": "^8.7.1",
+        "xzoom": "^1.0.15"
+    },
+    "scripts": {
+        "client": "nodemon server.js",
+        "owner": "nodemon ownerServer.js",
+        "dev": "concurrently --kill-others \"npm run client\" \"npm run owner\""
+    },
+    "name": "blue-cloud",
+    "description": "ĐỒ ÁN NMCNPM - WEB BÁN GIÀY",
+    "version": "1.0.0",
+    "main": "server.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/vinhnguyen2001/Blue-Cloud.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/vinhnguyen2001/Blue-Cloud/issues"
+    },
+    "homepage": "https://github.com/vinhnguyen2001/Blue-Cloud#readme",
+    "devDependencies": {
+        "body-parser": "^1.19.1",
+        "concurrently": "^7.0.0",
+        "nodemon": "^2.0.15"
+    }
+}

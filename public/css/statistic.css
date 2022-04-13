@@ -1,0 +1,24 @@
+.container {
+    padding: 5rem;
+}
+
+.title--statistic {
+    min-width: 35rem;
+    max-width: 35rem;
+}
+
+.boxChartPie {
+    width: 90%;
+}
+
+.primaryPart {
+    display: grid;
+    margin-top: 4rem;
+    grid-template-columns: 3fr 1fr;
+    column-gap: 5rem;
+}
+
+.boxChartRevenue {
+    margin-top: 4rem;
+    margin-bottom: 5rem;
+}

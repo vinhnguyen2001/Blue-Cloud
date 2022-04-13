@@ -1,0 +1,49 @@
+<div id="modal-mgs">
+</div>
+<div class="container-cart container">
+    
+    <div class="title section-title">
+        <h3 class="section-bestseller title secondary-title">CHI TIẾT ĐƠN HÀNG #{{ID_Order}}</h3>
+    </div>
+
+    <div class="content-table table-hover">
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th class="label" scope="col"></th>
+                    <th class="label" scope="col">Tên sản phẩm</th>
+                    <th class="label" scope="col">Size</th>
+                    <th class="label" scope="col">Giá thành</th>
+                    <th class="label" scope="col">Số lượng</th>                  
+                </tr>
+            </thead>
+
+            <tbody>
+                {{#each items}}
+                <tr>
+                    <td class="first" scope="row">
+                    <div class="cart-img"> <img src="../../image/{{this.image}}"  alt="photo1" width="100%"></div>
+                    </td>
+                    <td class="cart__name-item"><a href="/shoes/{{shoes_id}}/detail">{{this.shoes_name}}</a></td>
+                    <td class="cart--sizes">{{this.orc_size}}</td>
+                    <td>{{this.price}}</td>
+                    <td class="cart__input" >
+                      {{this.quantity}}
+                    </td>
+                   
+                    <div class="cart-content-id" style="display:none">{{this.cart_content_id}}</div>
+                </tr>
+                {{/each}}
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Tổng giá tiền:</td>
+                <td>
+                  {{sumPrice}}
+                </td>
+              </tr>
+            </tfoot>
+        </table>
+  </div>
+</div>
+

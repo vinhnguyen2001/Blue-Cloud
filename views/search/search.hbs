@@ -1,0 +1,117 @@
+<div id="modal-mgs">
+</div>
+<div class="container">
+    <div class="select-range">
+        <form class="form-select" action="/search" method="post">
+            <div class="form-range">
+                <label >Giá sản phẩm </label> 
+                <small>(ngàn đồng)</small>
+                <div class="range">
+                    <div class="sliderValue">
+                        <span id="span-value">0</span>
+                    </div>
+                    <div class="field">
+                        <div class="value left">
+                            0</div>
+                        <input type="range" min="0" max="20000" value="0" steps="50" id="inputSlider">
+                        <div class="value right">
+                            20000
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <label class="choose-title" >Chọn Size </label> 
+            <div class="form__check">
+                <div class="form__check--item" onclick="selectSize(this)">39</div>
+                <div class="form__check--item" onclick="selectSize(this)">40</div>
+                <div class="form__check--item" onclick="selectSize(this)">41</div>
+                <div class="form__check--item" onclick="selectSize(this)">42</div>
+                <div class="form__check--item" onclick="selectSize(this)">43</div>
+                <div class="form__check--item" onclick="selectSize(this)">44</div>
+                <div class="form__check--item" onclick="selectSize(this)">45</div>
+            </div>
+            
+            <div class="btn-select"><button type="submit" class"btn">Lọc</button></div>
+        </form>
+    </div>
+
+    <div class="display-product">
+     
+        <div class="product">
+             {{#each Packages}}
+            <div class="product__item" onmouseover="showPurchasegoods(this)" onmouseout="hidePurchasegoods(this)">
+                <div class="product__item--img img--bitis">
+                    <img src="../../image/{{this.image}}" alt="photo1" width="100%">
+                </div>
+                
+                <div class="product__size" onmouseover="turnUp(this)" onmouseout="disappear(this)">
+                    <div class="product__size--front">
+                        <span class="product__size-item" >+{{size.length}} size</span>
+                    </div>
+                    <div class="product__size--back">
+                        {{#each size}}
+                            <span class="product__size-item"onclick="chooseSize(this)">{{this}}</span>
+                        {{/each}}
+                    </div>
+                </div>
+                <div class="product__name">
+                    <a href="/shoes/{{this.shoes_id}}/detail">
+                        <p class="p-name">{{this.shoes_name}}</p>
+                    </a>
+                </div>
+                <div class="product__price">
+                    {{this.price}} đ
+                </div>
+
+                <div class="product__buy btn" onclick="addItem(this)">
+                    <button>
+                        Thêm vào giỏ hàng
+                    </button>
+                </div>
+                <div class="shoe_id">{{this.shoes_id}}</div>
+            </div>
+            {{/each}}
+             {{#compareInt flag 0}}
+
+            <div id="notfound">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <h2>
+                    Không tìm thấy sản phẩm phù hợp 
+                </h2>
+            </div>
+        {{/compareInt}}
+        </div>
+       
+        {{!-- <div class="page example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item ">
+                    <a class="page-link" href="/nike?page=">Trước</a>
+                </li>
+                <li class="page-item"><a class="page-link"></a></li>
+                <li class="page-item">
+                    <a class="page-link" href="/nike?page=">Tiếp theo</a>
+                </li>
+            </ul>
+        </div> --}}
+    </div>
+
+    {{!-- <div class="form-hidden">
+        <form class="form-hidden"action="/add-item" method="post"></form>
+    </div> --}}
+</div>
+
+<script>
+    const slideValue = document.querySelector("#span-value");
+    const inputSlider = document.querySelector("#inputSlider");
+
+    inputSlider.oninput = (() => {
+        let value = inputSlider.value;
+        slideValue.textContent = value;
+        slideValue.style.left = (value / 2) + "%";
+        slideValue.classList.add("show");
+    });
+    // inputSlider.onblur = (() => {
+    //     slideValue.classList.remove("show");
+    // });
+</script>

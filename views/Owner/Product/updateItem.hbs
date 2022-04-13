@@ -1,0 +1,143 @@
+
+<div id="toast-msg">
+</div>
+</div>
+    <div class="title section-title">
+    <h3 class="section-bestseller title secondary-title">THÔNG TIN SẢN PHẨM</h3>
+</div>
+<div class="container">
+    <div class="carousel detail-container slide" id="carouselControls" data-ride="carousel">
+        <div class="detail-img carousel-inner" id="detail-img">
+                {{#each item.image}}
+                <div class="carousel-item {{#if @first }}active {{/if}}"> 
+                    <img src="../../../image/{{this}}">
+                </div>
+                {{/each}}
+                <a class="carousel-control carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control carousel-control-next" href="#carouselControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
+        </div>
+    </div>
+
+    <div class="information info">
+        
+        <form action="/allproduct/{{item.shoes_id}}/detail"  method="POST" class="form__edit" id="form__edit" enctype="multipart/form-data">
+          <div class="info__primary">
+            <div class="info__name">
+                <label for="name" class="info-edit--title">Tên giày</label>
+                <input type="text" class="form__edit--name" name="name" value="{{item.shoes_name}}">
+            </div>
+            <div class="info__brand">
+                <label for="brand" class="info-edit--title">Tên hãng</label>
+                <select type="text" class="form__edit--brand" name="brand">
+                    {{#each brands}}
+                    <option {{#compareInt this.brand_id ../item.brand_id}} selected="selected"
+                    {{/compareInt}} value="{{this.brand_id}}">{{this.brand_name}}</option>
+                    {{/each}}  
+                  
+                </select>
+            </div>
+            <div class="info__price">
+                <label for="price" class="info-edit--title">Giá tiền</label>
+                <input type="text" class="form__edit--price" name="price" value="{{item.price}}"
+                placeholder="đơn vị: VND">
+            </div>
+              <div class="info__img">
+                <label for="name" class="info-edit--title">Cập nhật ảnh</label>
+                <input  type="file" class="form__edit--img"  name="images" id="file" accept=".jpg,.png,.jfif" multiple="multiple"  onchange="updateList()">
+                <div id="fileList">
+                    <p id="file-content">
+
+                    </p>
+                </div>
+              </div>
+          </div>
+          <div class="info__secondary">
+
+            <div class="info__size">
+                <label for="name" class="info-edit--title">Kích thước</label>
+              
+                {{#each item.size}}
+                <div class="info__size--item">
+                    <input type="number" onchange="checkValidation(this,{{this}})" min="0" max="50" step="1" name="size" value="{{this}}">
+                </div>
+                {{/each}}
+            </div>
+            <div class="info__stock">
+                <label for="name" class="info-edit--title">Còn hàng</label>
+
+                {{#each item.stock}}
+                <div class="info__stock--item">
+                    <input type="number" onchange="checkValidation(this,{{this}})" min="0" name="stock" value="{{this}}">
+                </div>
+                {{/each}}
+            </div>
+          </div>
+        </form>
+          <div class="info__ternary">
+              <button class="btn__item btn__create">
+                  <i class="fa-solid fa-circle-plus"></i>
+              </button>
+          </div>
+        <div class="options__btn">
+            <div class="btn__back">
+                <a href="/allproduct?page=1">
+                    <button class="btn__back--blue btn__item" >
+                        Trở về
+                    </button>
+                </a>
+            </div>
+            <div class="btn__save">
+                <button class="btn__save--red btn__item"  data-toggle="modal"   data-target="#comfirm">
+                        Lưu ngay
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="comfirm" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border:none !important">
+      <div class="modal-header">
+        <h5 id="removeModalHead" class="modal-title" style="font-size: 20px;">Thông báo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="border-color:red;">
+        Bạn chắc chắn muốn lưu lại thông tin trên
+      </div>
+      <div class="modal-footer">
+        <button id="confirmbtn"  class="btn btn-success"type="button" class="btn btn-light" style="font-size: 15px">Xác nhận</button>
+        <button type="button" class="btn" style="font-size: 15px; background-color:#eee" data-dismiss="modal">Hủy</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{{#compareString update "error" }} 
+<script >
+    window.addEventListener("load",  function() {
+        showErrorToast("Cập nhật không thành công. Hãy thử lại");
+    }); 
+</script> 
+{{/compareString}}
+{{#compareString update "success" }} 
+<script >
+    window.addEventListener("load",  function() {
+        showSuccessToast("Cập nhật sản phẩm thành công");
+    }); 
+</script> 
+{{/compareString}}
+
+<script type = "text/javascript" >
+
+  
+</script>

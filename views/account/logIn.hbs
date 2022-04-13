@@ -1,0 +1,29 @@
+
+<div class="container">
+    <form id="form" class="form" action="/dangnhap" method="POST">
+        <div class="header--title">
+            <h2> Đăng Nhập </h2>
+        </div>
+        
+        <div class="form-item">
+            <label for="userName">Tên đăng nhập</label>
+            <input type="text" placeholder="UserName" name="username" id="userName">
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
+        </div>
+
+        <div class="form-item">
+            <label for="password">Mật khẩu</label>
+            <input type="password" name ="password" placeholder="12345678" id="password">
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
+        </div>
+
+        <div class="form-item_ask">
+            Chưa có tài khoản?<a href="/dangki"> Đăng kí</a>
+        </div>
+        <button type="submit">Đăng Nhập</button>
+    </form>
+</div>

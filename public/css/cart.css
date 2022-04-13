@@ -1,0 +1,251 @@
+/* CÀI ĐẶT BAN ĐẦU */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 10px;
+}
+
+
+/* Section  - bestseller */
+
+.section-title {
+    position: relative;
+    top: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-block;
+    text-align: center;
+    line-height: 2.8rem;
+    font-size: 1.8rem;
+    background-color: #034ea1;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+}
+
+.secondary-title {
+    text-align: center;
+    margin: 0.5rem 0 0.5rem;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: white;
+    padding: 0.2rem 8rem;
+}
+
+
+/* container cart */
+
+.container-cart {
+    height: auto;
+    border-top: 0.25px solid #eee;
+    margin-bottom: 10rem;
+    padding: 0;
+    padding: 0 10rem;
+    min-width: 100%;
+}
+
+.first {
+    width: 15%;
+    overflow: hidden;
+}
+
+.cart-img {
+    display: inline-block;
+    /* min-width: 100%;
+    max-width: 100%; */
+    min-height: 12.5rem;
+    max-height: 12.5rem;
+    background: rgb(153, 24, 24);
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.cart-img img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+
+/* table */
+
+.label {
+    font-size: 1.65rem;
+    font-weight: 600;
+}
+
+.label-price {
+    min-width: 10rem;
+    max-width: 10rem;
+}
+
+.content-table {
+    padding: 0 5rem;
+}
+
+.content-table .table tr {
+    padding: 15px 0;
+    border: 0.5px solid #ccc;
+}
+
+.table .thead-light th {
+    border-bottom: none;
+    background: #eee;
+}
+
+.title.section-title {
+    margin-bottom: 4rem;
+}
+
+.table td,
+.table th {
+    padding: 1.7rem 0.75rem;
+    color: #444444;
+}
+
+.cart__name-item {
+    color: #030208;
+    max-width: 5rem;
+    word-wrap: break-word;
+    text-transform: capitalize;
+}
+
+.cart__input {
+    min-width: 5rem;
+}
+
+.cart__input--item {
+    width: 7rem;
+    margin-top: -2rem;
+    padding-left: 0.75rem;
+}
+
+.cart__name-item a {
+    color: #030208;
+}
+
+.cart__name-item a:hover {
+    text-decoration: none;
+    color: #1b6fcf;
+}
+
+.cart__stock {
+    display: inline-block;
+    text-align: left;
+}
+
+.cart__stock p {
+    padding-left: 2rem;
+}
+
+
+/* .table thead th {
+    vertical-align: bottom;
+    border-bottom: 1px solid #dee2e6;
+} */
+
+
+/* button */
+
+.btn-payment {
+    margin-top: 4rem;
+    display: block;
+    text-align: right;
+    padding-right: 5rem;
+    overflow: hidden;
+}
+
+
+/* .btn-item {
+    padding: 15rem;
+} */
+
+.btn1 {
+    right: 48rem;
+}
+
+.btn2 {
+    right: 28rem;
+}
+
+.payment_option {
+    padding: 2.5rem 1.5rem;
+    font-size: 20px;
+    color: #fff;
+    background: #f72b3f;
+    border: none;
+    border-radius: 5px;
+}
+
+.btn-del-item {
+    background-color: #ccc;
+}
+
+.payment_option:hover {
+    opacity: 0.8;
+    text-decoration: none;
+    transform: translateY(-0.2px);
+}
+
+a.payment_option:hover {
+    color: white;
+    text-decoration: none;
+    opacity: 1;
+}
+
+
+/*Code cho phần detail cart*/
+
+.btn-back {
+    margin-top: 4rem;
+    display: block;
+    text-align: left;
+    padding-left: 5rem;
+    overflow: hidden;
+    outline: none;
+    margin-bottom: 1rem;
+}
+
+.btn-back button {
+    border: none;
+}
+
+.btn-back button a {
+    border: none;
+    display: block;
+    padding: 1rem 2rem;
+    outline: none;
+    color: white;
+    background-color: #1b6fcf;
+    border-radius: 5px;
+}
+
+.btn-back button:hover {
+    opacity: 0.8;
+    text-decoration: none;
+}
+
+.btn-transfrom:active {
+    transform: translateY(1.2px);
+}
+
+.btn-back button:hover {
+    color: white;
+    text-decoration: none;
+    opacity: 1;
+}
+
+
+/*Code cho footer */
+
+footer {
+    color: #e9ecef;
+    background-color: #212529;
+    padding: 1.4rem;
+    text-align: center;
+}

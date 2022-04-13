@@ -1,0 +1,36 @@
+body {
+    background-image: url("../img/background-owner.jpg");
+}
+
+.manage-home {
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 10rem 0rem;
+    margin-left: 10%;
+    height: 80vh;
+    grid-column-gap: 4rem;
+    padding-top: 15rem;
+}
+
+.box {
+    height: 210px;
+    background-color: #fafafc;
+    color: #212529;
+    text-decoration: none !important;
+    padding: 30px 20px 0;
+    text-align: center;
+    transition: all linear 0.2s;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 0 4px 2px rgb(94, 109, 238, 0.2);
+}
+
+.box p {
+    margin: 0;
+    margin-top: 16px;
+}
+
+.box:hover {
+    opacity: 0.7;
+}

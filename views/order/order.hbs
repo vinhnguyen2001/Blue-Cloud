@@ -1,0 +1,42 @@
+<div class="container-cart">
+
+    <div class="title section-title">
+        <h3 class="section-bestseller title secondary-title">ĐƠN HÀNG CỦA CỦA BẠN</h3>
+    </div>
+
+    <div class="content-table table-hover">
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th  class="label"  scope="col">ID</th>
+                    <th  class="label totalMoney" scope="col">Tổng tiền</th>
+                    <th  class="label" scope="col">Thời gian</th>
+                    <th  class="label phoneNumber" scope="col">SĐT</th>
+                    <th  class="label" scope="col">Địa chỉ</th>
+                    <th  class="label" scope="col">Trạng thái</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {{#each Orders}}
+                <tr >
+                    <th scope="row">{{this.order_id}}</th>
+                    <td>{{this.total}}</td>
+                    <td>{{this.order_time}}</td>
+                    <td>{{this.order_phone}}</td>
+                    <td>{{this.address}}</td>
+                    <td>{{this.status}}</td>
+                    <td class="btn btn-detail">
+                        <a href="/donhang/{{this.order_id}}/detail"  target="_blank" class="payment_option order_detail" style="padding: 5px; font-size:15px">
+                            Chi tiết
+                        </a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+
+</div>

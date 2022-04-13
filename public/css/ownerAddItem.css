@@ -1,0 +1,128 @@
+.container {
+    min-width: 100%;
+    padding-top: 3rem;
+    padding-bottom: 15rem;
+}
+
+.addshoe {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: #eee;
+    border-radius: 0.5rem;
+    padding: 2rem 3rem;
+    padding-bottom: 7rem;
+    margin-top: 5rem;
+    background-image: url('../image/addwallpaper.jfif');
+    background-position: center;
+    background-size: cover;
+}
+
+.addshoe__left {
+    margin-right: 5rem;
+}
+
+.addshoe__right {
+    margin-left: 5rem;
+}
+
+.addshoe__title {
+    display: block;
+    font-size: 1.65rem;
+    color: rgb(255, 255, 255);
+    margin-top: 2rem;
+    margin-bottom: 0.5em;
+}
+
+.addshoe input,
+.form__add--brand {
+    padding: 1.25rem 1rem;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    color: #444444;
+}
+
+.form__add--img {
+    border: 0.015px solid white !important;
+    padding: 1rem 1rem !important;
+    color: #444444;
+    background-color: white;
+}
+
+.addshoe__img {
+    position: relative;
+}
+
+#fileList {
+    position: absolute;
+    top: 2.5rem;
+    width: 60%;
+    border-radius: 5px;
+    right: 0;
+    padding-right: 5px;
+    z-index: 3;
+    padding-top: 1.5rem;
+    overflow-x: scroll !important;
+    overflow-y: none;
+    word-wrap: none;
+    height: 4.5rem;
+}
+
+#fileList::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
+}
+
+#fileList::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+}
+
+.options__btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.btn__back {
+    margin-top: 5rem;
+    display: inline-block;
+    padding-left: 5%;
+}
+
+.btn__back--blue {
+    border: none;
+    width: 10rem;
+    padding: 1.5rem 1rem;
+    background-color: rgb(63, 148, 245);
+    border-radius: 5px;
+    color: white;
+}
+
+.btn__add {
+    margin-top: 5rem;
+    display: inline-block;
+    text-align: right;
+    margin-right: 5%;
+}
+
+.btn__add--blue {
+    text-align: left;
+    padding: 1.5rem 1rem;
+    border: none;
+    font-size: 1.65rem;
+    background-color: rgb(255, 60, 60);
+    color: white;
+    border-radius: 5px;
+}
+
+.btn__item:hover {
+    opacity: 0.9;
+}
+
+.btn__item:active {
+    transform: translateY(1px);
+}

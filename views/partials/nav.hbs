@@ -1,0 +1,80 @@
+
+<header class="header">
+    <div class="navigation">
+        <div class="nav__logo">
+            <li class="nav-item">
+                <a class="nav-link" href="/">
+                    <h3>BLUE CLOUD</h3>
+                </a>
+            </li>
+            </li>
+        </div>
+        <div class="nav__menu">
+            <ul class="nav nav-pills justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link nav__menu--item" aria-current="page" href="/nike">Nike</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link nav__menu--item" href="/adidas">Adidas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav__menu--item" href="/bitis">Bitis Hunter</a>
+                </li>
+            </ul>
+        </div>
+      
+        <div class="nav__account">
+            <div class="nav__account-search">
+                <form class="form-inline" action="/search" method="get">
+                    <input class="form-control mr-sm-2" type="search" id="search" name="search" placeholder="Search" aria-label="Search"
+                    {{#if search}} value="{{search}}" {{/if}}>
+                    <button class="btn btn-outline-success my-2 my-sm-0 search-icon btn-primary" 
+                    style="border:none; background:##688dfd"
+                    
+                    type="submit"><i class="fas fa-search"></i></button>
+                </form>
+                
+            </div>
+            <div class="nav__account-select">
+              <ul class="nav nav-pills">
+                    <li class="nav-item dropdown">
+                        {{#if user}}
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-expanded="false">
+                           <p class="puser__name">{{user.username}}</p> 
+                           <i class="fa-solid fa-sort-down"></i>
+                        </a>
+                        
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item dropdown__cart" href="/giohang">Giỏ hàng <i class="fa-solid fa-cart-shopping">
+                                  <span  id="dropdown__cart--amount">0</span>
+                            </i></a></li>
+                            <li>
+                                <a class="dropdown-item " href="/donhang">Đơn hàng <i class="fa-solid fa-money-bill">
+                                  
+                                </i></a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="/dangxuat">Đăng xuất <i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
+                        </ul>
+                        {{else}}
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                           Xin chào
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/dangnhap">Đăng nhập</a></li>
+                            <li>
+                                <a class="dropdown-item" href="/dangki">Đăng kí</a>
+                            </li>
+                        </ul>
+                
+                    {{/if}}
+                    </li>
+            </ul>
+            </div>
+
+        </div>
+</header>

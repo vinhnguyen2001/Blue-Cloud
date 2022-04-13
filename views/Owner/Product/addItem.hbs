@@ -1,0 +1,148 @@
+<div class="container">
+    <div id="toast-msg">
+    </div>
+    <div class="title section-title">
+        <h3 class="section-bestseller title secondary-title">THÊM MỚI SẢN PHẨM</h3>
+    </div>
+    <form action="/allproduct/add-item" method="post"class="form__add"  enctype="multipart/form-data">
+    <div class="addshoe">
+        <div class="addshoe__left">
+            <div class="addshoe__name">
+                <label for="name" class="addshoe__title">Tên giày</label>
+                <input type="text" class="form__add--name" name="name" placeholder="nhập tên giày">
+            </div>
+            <div class="addshoe__size">
+                <label for="size" class="addshoe__title">Kích thước</label>
+                <input type="text" class="form__add--size" name="size" placeholder="39,40,41,42,43,44">
+            </div>
+            <div class="addshoe__price">
+                <label for="price" class="addshoe__title">Nhập giá tiền</label>
+                <input type="text" class="form__add--price" name="price"
+                placeholder="đơn vị: VND">
+            </div>
+        </div>
+        <div class="addshoe__right">
+            <div class="addshoe__brand">
+                <label for="brand" class="addshoe__title">Chọn hãng</label>
+                <select type="text" class="form__add--brand" name="brand">
+                    {{#each brands}}
+
+                    <option value="{{this.brand_id}}">{{this.brand_name}}</option>
+
+                    {{/each}}                  
+
+                </select>
+            </div>
+            <div class="addshoe__quatity">
+                <label for="quantity" class="addshoe__title">Nhập số lượng</label>
+                <input type="text" class="form__add--quantity" name="quantity" placeholder="101,100,102,103,104,105">
+            </div>
+            <div class="addshoe__img">
+                <label for="name" class="addshoe__title">Chọn ảnh</label>
+                <input  type="file" class="form__add--img"  name="images" id="file" accept=".jpg,.png,.jfif" multiple="multiple"onchange="javascript:updateList()">
+                <div id="fileList"></div>
+            </div>
+        </div>
+    </div>
+    </form>
+    <div class="options__btn">
+        <div class="btn__back">
+            <a href="/allproduct?page=1">
+                <button class="btn__back--blue btn__item" >
+                    Trở về
+                </button>
+            </a>
+        </div>
+        <div class="btn__add">
+             <button class="btn__add--blue btn__item"  data-toggle="modal" data-target="#comfirm">
+                 Thêm sản phẩm
+            </button>
+        </div>
+    </div>
+    
+
+</div>
+
+<div class="modal fade" id="comfirm" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border:none !important">
+      <div class="modal-header">
+        <h5 id="removeModalHead" class="modal-title" style="font-size: 20px;">Thông báo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="border-color:red;">
+        Bạn chắc chắn muốn thêm sản phẩm
+      </div>
+      <div class="modal-footer">
+        <button id="btnadd"  class="btn btn-success"type="button" class="btn btn-light" style="font-size: 15px">Xác nhận</button>
+        <button type="button" class="btn" style="font-size: 15px; background-color:#eee" data-dismiss="modal">Hủy</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type = "text/javascript" >
+
+    const btnadd = document.querySelector("#btnadd");
+    const form = document.querySelector(".form__add");
+
+    const updateList = function() {
+        var input = document.getElementById('file');
+        var output = document.getElementById('fileList');
+
+        var temp = "";
+        for (var i = 0; i < input.files.length; ++i) {
+            temp += `${input.files.item(i).name},`;
+        }
+        output.innerText = temp.slice(0, -1);
+    };
+
+    document.addEventListener('DOMContentLoaded', function() {
+        btnadd.onclick = () => {
+            form.submit();
+        };
+    });
+
+</script>
+
+
+
+
+{{#compareString create "001" }} 
+<script >
+    window.addEventListener("load",  function() {
+        showErrorToast("Hãy nhập đầy đủ các thông tin");
+    }); 
+</script> 
+{{/compareString}}
+
+{{#compareString create "002" }} 
+<script >
+    window.addEventListener("load",  function() {
+        showErrorToast("Kích thước và số lượng không tương xứng");
+    }); 
+</script> 
+{{/compareString}}
+{{#compareString create "003" }} 
+<script >
+    window.addEventListener("load",  function() {
+        showErrorToast("Sản phẩm đã tồn tại");
+    }); 
+</script> 
+{{/compareString}}
+{{#compareString create "error" }} 
+<script >
+    window.addEventListener("load",  function() {
+        showErrorToast("Thêm không thành công. Hãy thử lại");
+    }); 
+</script> 
+{{/compareString}}
+{{#compareString create "success" }} 
+<script >
+    window.addEventListener("load",  function() {
+        showSuccessToast("Thêm sản phẩm thành công");
+    }); 
+</script> 
+{{/compareString}}

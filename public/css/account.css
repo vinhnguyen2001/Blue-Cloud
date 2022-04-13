@@ -1,0 +1,132 @@
+.container {
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 40%;
+    max-width: 100%;
+    font-size: 1.5rem;
+    margin-left: 30%;
+    margin-top: 7rem;
+    margin-bottom: 15rem;
+    height: 70vh;
+    z-index: 3;
+}
+
+.header--title {
+    border-bottom: 1px solid #f0f0f0;
+    background: #176fd3;
+    padding: 2rem 0;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.header--title h2 {
+    color: white;
+    margin: 0;
+}
+
+.form {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.form-item_ask {
+    text-align: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1.2rem;
+}
+
+.form-item {
+    padding: 1rem 3rem;
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.2rem;
+    position: relative;
+}
+
+.form-item label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+.form-item input {
+    background-color: white;
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    display: block;
+    font-family: inherit;
+    font-size: 1.4rem;
+    padding: 1rem;
+    width: 100%;
+}
+
+.form-item input:focus {
+    outline: 0;
+    border-color: #4091ee;
+}
+
+.form-item.success input {
+    border-color: #2ecc71;
+}
+
+.form-item.error input {
+    border-color: #e74c3c;
+}
+
+.form-item i {
+    visibility: hidden;
+    position: absolute;
+    top: 3.2rem;
+    right: 1rem;
+}
+
+.form-item small {
+    color: #e74c3c;
+    position: absolute;
+    top: 8.4rem;
+    bottom: 0;
+    margin-left: 3rem;
+    left: 0;
+    visibility: hidden;
+}
+
+.form-item.success i.fa-check-circle {
+    color: #2ecc71;
+    visibility: visible;
+    margin-top: 1rem;
+    margin-right: 3rem;
+}
+
+.form-item.error i.fa-exclamation-circle {
+    color: #e74c3c;
+    visibility: visible;
+    margin-top: 1rem;
+    margin-right: 3rem;
+}
+
+.form-item.error small {
+    visibility: visible;
+}
+
+.form button {
+    display: inline-block;
+    background: #176fd3;
+    border-radius: 4px;
+    color: #fff;
+    display: block;
+    font-family: inherit;
+    font-size: 1.6rem;
+    padding: 1rem;
+    margin-top: 3rem;
+    outline: none;
+    border: none;
+    width: 40%;
+    margin-left: 30%;
+    margin-bottom: 3rem;
+}
+
+.form button:hover {
+    background: #176fd3;
+    opacity: 0.95;
+}

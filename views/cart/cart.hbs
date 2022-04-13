@@ -1,0 +1,149 @@
+<div id="modal-mgs">
+</div>
+<div class="container-cart container">
+    
+    <div class="title section-title">
+        <h3 class="section-bestseller title secondary-title">GIỎ HÀNG CỦA BẠN</h3>
+    </div>
+
+    <div class="content-table table-hover">
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th class="label" scope="col"></th>
+                    <th class="label item__name" scope="col">Tên sản phẩm</th>
+                    <th class="label" scope="col">Size</th>
+                    <th class="label label-price" scope="col">Giá thành</th>
+                    <th class="label" scope="col">Số lượng</th>
+                    <th class="label" scope="col">Còn hàng</th>
+                    <th class="label"></th>
+                </tr>
+            </thead>
+
+            <tbody>
+              
+                {{#each Contents}}
+                <tr>
+                    <td class="first" scope="row">
+                    <div class="cart-img"> <img src="../../image/{{this.image}}"  alt="photo1" width="100%"></div>
+                    </td>
+                    <td class="cart__name-item "><a href="/shoes/{{shoes_id}}/detail">{{this.shoes_name}}</a></td>
+                    <td class="cart--sizes">{{this.cart_size}}</td>
+                    <td class="cart__price">{{this.price}}</td>
+                    <td class="cart__input" >
+                      <input name="quantity" onchange="checkValidation(this,{{this.cart_quantity}},this.parentElement)"class="cart__input--item cart--quantity" type="number" min="1" max="{{this.shoe_stock}}" step="1" value="{{this.cart_quantity}}">
+                      </input>
+                    </td>
+                    <td class="cart__stock">
+                      <p>{{this.shoe_stock}}</p>
+                    </td>
+                    <td>
+                        <button type="button"  class="payment_option btn-del-item" style="padding: 5px; font-size:15px"
+                            data-toggle="modal" data-type="one" data-name="{{this.shoes_name}}"
+                            data-idcontent="{{this.cart_content_id}}" data-c_id="{{Cart_id}}" data-s_id={{this.shoes_id}} data-cart_size ={{this.cart_size}}
+                            data-target="#removeModal">
+                            Xóa
+                        </button>
+                    </td>
+                    <td class="price" style="display:none">{{this.prePrice}}</td>
+                    <div class="cart-content-id" style="display:none">{{this.cart_content_id}}</div>
+                 
+                </tr>
+                {{/each}}
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Tổng giá tiền:</td>
+                <td id="sumPrice">
+                  {{sumPrice}}
+                </td>
+              </tr>
+            </tfoot>
+        </table>
+  </div>
+   <div class="btn-payment btn-transfrom" onclick="buyingItems()">
+        <button type="button" type="submit" class="btn-item btn2 payment_option" >
+            <a  style="color:white; text-decoration:none">Thanh toán ngay</a> 
+        </button>
+    </div>
+</div>
+
+<!-- Confirm remove modal -->
+<div class="modal fade" id="removeModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="removeModalHead" class="modal-title" style="font-size: 20px;">Xóa khỏi giỏ hàng</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="removeModalMsg" class="modal-body">
+        Bạn có chắc muốn xóa giày ... khỏi giỏ hàng?
+      </div>
+      <div class="modal-footer">
+        <button id="btnRemove" type="button" class="btn btn-light" style="font-size: 15px">Xóa</button>
+        <button type="button" class="btn btn-danger" style="font-size: 15px" data-dismiss="modal">Hủy</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Form remove ẩn -->
+<form name="removeForm" method="POST" action=""></form>
+
+
+<!-- Script cho cả trang -->
+<script>
+  function ucfirst(str,force){
+        str=force ? str.toLowerCase() : str;
+        return str.replace(/(\b)([a-zA-Z])/,function(firstLetter){
+              return   firstLetter.toUpperCase();
+        });
+  }
+  function ucwords(str,force){
+      str=force ? str.toLowerCase() : str;  
+      return str.replace(/(\b)([a-zA-Z])/g,function(firstLetter){
+              return   firstLetter.toUpperCase();
+      });
+  }
+  document.addEventListener('DOMContentLoaded', function () {    
+    // Phần của remove
+    var removeType;
+    var c_id;
+    var s_id;
+    var idcontent = 0;
+    var btnRemove = document.getElementById("btnRemove");
+    var removeForm = document.forms['removeForm'];
+    
+
+    // Khi remove modal hiện lên
+    $('#removeModal').on('show.bs.modal', function (event) {
+      var passBtn = $(event.relatedTarget);
+
+      removeType = passBtn.data('type');
+      c_id = passBtn.data('c_id');
+      if (removeType === "one") {
+        s_id = passBtn.data('s_id');
+        idcontent = passBtn.data('idcontent');
+
+        var s_name = ucwords(passBtn.data('name'),true);
+        var s_size = passBtn.data('size');
+
+        $('#removeModalHead').text("Xóa sản phẩm khỏi giỏ hàng");
+        $('#removeModalMsg').text(`  Bạn có chắc chắn muốn xóa giày ${s_name} khỏi giỏ hàng?`);
+      }
+    
+    });
+
+    // Khi click vào nút chấp nhận xóa trong remove modal
+    btnRemove.onclick = function () {
+      // Nếu xóa 1 sản phẩm
+      if (removeType === "one") {
+        removeForm.action = '/giohang/' + idcontent + '?_method=DELETE';
+        return removeForm.submit();
+      }
+    };
+  
+  });
+</script>

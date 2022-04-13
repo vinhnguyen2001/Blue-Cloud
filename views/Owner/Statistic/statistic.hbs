@@ -1,0 +1,67 @@
+<div class="container">
+
+        <div class="boxChartBar">
+            <div class="title section-title">
+                <h3 class="section-bestseller title secondary-title title--statistic">DOANH SỐ THÁNG</h3>
+            </div>
+            <div class="selectMonth">
+                <form action="/statistics" method="GET" id="form-month">
+                <select name="month" class="form-select curmonth " onchange="getMonth()">
+                    <option {{#compareInt month 1}}selected ="selected"{{/compareInt}} value ="1">Tháng 1</option>
+                    <option {{#compareInt month 2}}selected ="selected"{{/compareInt}} value ="2">Tháng 2</option>
+                    <option {{#compareInt month 3}}selected ="selected"{{/compareInt}} value ="3">Tháng 3</option>
+                    <option {{#compareInt month 4}}selected ="selected"{{/compareInt}} value ="4">Tháng 4</option>
+                    <option {{#compareInt month 5}}selected ="selected"{{/compareInt}}value ="5">Tháng 5</option>
+                    <option {{#compareInt month 6}}selected ="selected"{{/compareInt}} value ="6">Tháng 6</option>
+                    <option {{#compareInt month 7}}selected ="selected"{{/compareInt}} value ="7">Tháng 7</option>
+                    <option {{#compareInt month 8}}selected ="selected"{{/compareInt}} value ="8">Tháng 8</option>
+                    <option {{#compareInt month 9}}selected ="selected"{{/compareInt}} value ="9">Tháng 9</option>
+                    <option {{#compareInt month 10}}selected ="selected"{{/compareInt}} value ="10">Tháng 10</option>
+                    <option {{#compareInt month 11}}selected ="selected"{{/compareInt}} value ="11">Tháng 11</option>
+                    <option {{#compareInt month 12}}selected ="selected"{{/compareInt}} value ="12">Tháng 12</option>
+                </select>
+                </form>
+            </div>
+            <input type="hidden" value="{{monthlysales}}" id="saleProductValue">
+            <div>
+                <canvas id="saleProduct"></canvas>
+            </div>
+        </div>
+    <div class="primaryPart">
+        <div class="boxChartBar">
+            <div class="title section-title">
+                <h3 class="section-bestseller title secondary-title title--statistic">DOANH SỐ GIÀY</h3>
+            </div>
+            <input type="hidden" id="lineChartValue" value="{{totalShoes}}">
+
+            <div>
+                <canvas id="lineChart"></canvas>
+            </div>
+        </div>
+        <div class="boxChartPie">
+            <div class="title section-title">
+                <h3 class="section-bestseller title secondary-title title--statistic">TỈ LỆ PHẦN TRĂM</h3>
+            </div>
+            <input type="hidden" id="pieChartValue" value="{{percentShoes}}">
+
+            <div class="test">
+                <canvas id="pieChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="boxChartRevenue">
+        <div class="title section-title">
+            <h3 class="section-bestseller title secondary-title title--statistic">DOANH THU</h3>
+        </div>
+            <input type="hidden"id="revenueValue" value="{{revenue}}">
+
+        <div>
+            <canvas id="lineChartRevenue"></canvas>
+        </div>
+    </div>
+
+
+</div>
+<script>
+
+</script>

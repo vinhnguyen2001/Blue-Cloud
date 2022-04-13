@@ -1,0 +1,214 @@
+<div class="container-cart">
+
+    <div id="toast-msg">
+    </div>
+    <div class="title section-title">
+        <h3 class="section-bestseller title secondary-title">QUẢN LÝ ĐƠN HÀNG</h3>
+    </div>
+
+    <div class="nav__account-search">
+        <form class="form-inline" action="allorders" method="get">
+            <input class="form-control mr-sm-2" type="search" id="search" name="search" placeholder="Search by customer's phone" aria-label="Search"
+            {{#if search}} value="{{search}}" {{/if}}>
+            <button class="btn btn-outline-success my-2 my-sm-0 search-icon btn-primary" 
+            style="border:none; background:##688dfd"
+            type="submit"><i class="fas fa-search"></i></button>
+        </form>
+        
+    </div>
+          
+    {{#if notFound}}
+          <div id="notfound">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+              <h2>
+                  Không tìm thấy sản phẩm phù hợp  
+              </h2>
+          </div>
+    {{else}}
+    <div class="content-table table-hover">
+    
+        <table class="table table__content table-bordered table-hover">
+            <thead class="table__content-thead">
+                <tr>
+                    <th>ID</th>
+                    <th scope="col">Tổng tiền</th>
+                    <th scope="col">Thời gian</th>
+                    <th scope="col">SĐT</th>
+                    <th scope="col">Địa chỉ</th>
+                    <th scope="col">Trạng thái</th>
+                    <th scope="col">Chỉnh sửa</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {{#each items}}
+                <tr>
+                    <td class="order-id"><p id="order-id">#{{this.order_id}}</p></td>
+                    <td>{{this.total}}</td>
+                    <td>{{this.order_time}}</td>
+                    <td>{{this.order_phone}}</td>
+                    <td>{{this.address}}</td>
+                    <td>{{this.status}}</td>
+                    <td class="common--btn">
+                        <div class="button-edit">
+                          <a href="/allorders/{{this.order_id}}/detail" style="color:white;" onfocus="return false" target="_blank">
+                              <button class="btn btn__item btn--blue" style="padding: 5px; font-size:15px">
+                                  Chi tiết
+                              </button>
+                          </a>
+                        </div>
+                        <div class="button-edit">
+                          <button type="button" class="btn btn__item btn--green" style="padding: 5px; font-size:15px"
+                              data-toggle="modal" data-o_id="{{this.order_id}}" data-o_phone = "{{this.order_phone}}"
+                              data-o_address = "{{this.address}}" data-o_status="{{this.status}}" data-target="#updateModal"
+                              {{#compareString this.status "Đã hủy"}}disabled{{/compareString}}>
+                              Cập nhật
+                          </button>
+                        </div>
+                        <div class="button-edit">
+                          <button type="button" class="btn btn__item btn--red" style="padding: 5px; font-size:15px"
+                              data-toggle="modal" data-o_id="{{this.order_id}}" data-target="#removeModal"
+                              {{#compareString this.status "Đã hủy"}}disabled{{/compareString}}>
+                              Hủy
+                          </button>
+                        </div>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    
+    </div>
+  {{/if}}
+  <div class="page__navigation">
+        <ul class="pagination page">
+         
+            {{#forN total_page}}
+            <li class="pag__item">              
+                <a class="pag__link {{#compareInt this ../page}} pag__link--active{{/compareInt}}"
+                href="/allorders?page={{this}}&search={{../search}}">{{this}}</a>
+            </li>
+            {{/forN}}
+        </ul>
+  </div>
+</div>
+
+<!-- Confirm remove modal -->
+<div class="modal fade" id="removeModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="removeModalHead" class="modal-title" style="font-size: 20px;">Hủy đơn hàng</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="removeModalMsg" class="modal-body">
+          Bạn có chắc muốn hủy đơn hàng ... ?
+        
+      </div>
+      <div class="modal-footer">
+        <button id="btnRemove" type="button" class="btn btn__conf btn-light" background="#eee" style="font-size: 15px">Có</button>
+        <button type="button" class="btn btn-secondary btn__conf btn-danger" style="font-size: 15px" data-dismiss="modal">Không</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Form remove ẩn -->
+<form name="removeForm" method="POST" action=""></form>
+
+
+<!-- Update modal -->
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" width="100%">
+  <div class="modal-dialog modal-lg" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="updateModalHead" class="modal-title" style="font-size: 20px;">Sửa hóa đơn ...</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name="updateForm" method="post" action="">
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label">ID</label>
+            <div class="col-sm-8">
+              <input id="modalUId" type="text" readonly class="form-control-plaintext" style="font-size: 15px;">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Sđt</label>
+            <div class="col-sm-8">
+              <input id="modalUPhone" type="text" class="form-control" require style="font-size: 15px;" name="o_phone">
+            </div>
+          </div>
+          <div id="formBack1" role="alert">
+
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Địa chỉ</label>
+            <div class="col-sm-8">
+              <input id="modalUAddress" type="text" class="form-control" require style="font-size: 15px;" name="o_address">
+            </div>
+          </div>
+          <div id="formBack2" role="alert">
+
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Trạng thái</label>
+            <div class="col-sm-8  checkbox__radio--owner">
+              <div class="primary">
+                <input class="checkbox__radio--item" id="paid" name="o_status" value="1" type="radio" class="form-control" style="font-size: 15px;" 
+                >
+                <label>Đã thanh toán</label>
+              </div>
+              <div class="secondary">
+                <input class="checkbox__radio--item" id="unpaid"  name="o_status" value ="0" type="radio" class="form-control" style="font-size: 15px;"
+                >
+                <label>Chưa thanh toán</label>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button id="btnUpdate" type="button" class="btn btn-success" style="font-size: 15px">Xác nhận </button>
+        <button type="button" class="btn btn-secondary" style="font-size: 15px" data-dismiss="modal">Hủy</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Script cho cả trang -->
+
+
+{{#compareString del "error" }} 
+<script >
+    window.addEventListener("load",  function() {
+        showErrorToast("Hủy đơn hàng không thành công. Hãy thử lại");
+    }); 
+</script> 
+{{/compareString}}
+{{#compareString del "success" }} 
+<script >
+    window.addEventListener("load",  function() {
+        showSuccessToast("Hủy đơn hàng thành công");
+    }); 
+</script> 
+{{/compareString}}
+{{#compareString update "success" }} 
+<script >
+    window.addEventListener("load",  function() {
+        showSuccessToast("Cập nhật đơn hàng thành công");
+    }); 
+</script> 
+{{/compareString}}
+{{#compareString update "error" }} 
+<script >
+    window.addEventListener("load",  function() {
+        showSuccessToast("Cập nhật đơn hàng không thành công");
+    }); 
+</script> 
+{{/compareString}}

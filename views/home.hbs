@@ -1,0 +1,156 @@
+<div id="modal-mgs">
+</div>
+<div class="container">
+    <section class="section-carousel">
+        <div class="carousel">
+             <div class="carousel__item carousel__item--visible">
+                <img src="./img/barrett-ward.jpg">
+            </div>
+            <div class="carousel__item ">
+                <img src="./img/air3.jpg">
+            </div>
+            <div class="carousel__item">
+                <img src="./img/luis-felipe.jpg">
+            </div>
+        </div>
+    
+    </section>
+    
+    <section class="section-bestseller section">
+        <div class="title section-title">
+            <h3 class="section-bestseller--title secondary-title">SẢN PHẨM NIKE</h3>
+        </div>
+        <div class="product">
+            {{#each PackagesNike}}
+            <div class="product__item" onmouseover="showPurchasegoods(this)" onmouseout="hidePurchasegoods(this)">
+                <div class="product__item--img ">
+                    <img src="../../image/{{this.image}}" alt="photo1" width="100%">
+                </div>
+    
+                <div class="product__size" onmouseover="turnUp(this)" onmouseout="disappear(this)">
+                    <div class="product__size--front">
+                        <span class="product__size-item">+{{size.length}} size</span>
+                    </div>
+                    <div class="product__size--back">
+                        {{#each size}}
+                            <span class="product__size-item" onclick="chooseSize(this)">{{this}}</span>
+                        {{/each}}
+                    </div>
+    
+                </div>
+                <div class="product__name">
+                    <a href="/shoes/{{this.shoes_id}}/detail">
+                        <p class="p-name" >{{this.shoes_name}}</p>
+                    </a>
+                </div>
+                <div class="product__price">
+                    {{this.price}}
+                </div>
+    
+                <div class="product__buy btn" onclick="addItem(this)">
+                    <button type="button">
+                        Thêm vào giỏ hàng
+                    </button>
+                </div>
+                <div class="shoe_id">{{this.shoes_id}}</div>
+            </div>
+            {{/each}}
+    
+        </div>
+    </section>
+    <section class="section-Male section">
+        <div class="title section-title">
+            <h3 class="secondary-title">SẢN PHẨM ADIDAS</h3>
+        </div>
+        <div class="product">
+              {{#each PackagesAdidas}}
+            <div class="product__item" onmouseover="showPurchasegoods(this)" onmouseout="hidePurchasegoods(this)">
+                <div class="product__item--img">
+                    <img src="../../image/{{this.image}}" alt="photo1" width="100%">
+                </div>
+    
+                <div class="product__size" onmouseover="turnUp(this)" onmouseout="disappear(this)">
+                    <div class="product__size--front">
+                        <span class="product__size-item">+{{size.length}} size</span>
+                    </div>
+                         <div class="product__size--back">
+                        {{#each size}}
+                            <span class="product__size-item"onclick="chooseSize(this)">{{this}}</span>
+                        {{/each}}
+                    </div>
+    
+                </div>
+                <div class="product__name">
+                     <a href="/shoes/{{this.shoes_id}}/detail">
+                        <p class="p-name">{{this.shoes_name}}</p>
+                    </a>
+                </div>
+                <div class="product__price">
+                    {{this.price}}
+                </div>
+                <div class="product__buy btn" onclick="addItem(this)">
+                    <button >
+                        Thêm vào giỏ hàng
+                    </button>
+                </div>
+                <div class="shoe_id">{{this.shoes_id}}</div>
+            </div>
+             {{/each}}
+    
+        </div>
+    </section>
+    <section class="section-feMale section">
+        <div class="title section-title">
+            <h3 class="section-bestseller--title secondary-title">SẢN PHẨM BITIS</h3>
+        </div>
+        <div class="product bitis">
+             {{#each PackagesBitis}}
+            <div class="product__item" onmouseover="showPurchasegoods(this)" onmouseout="hidePurchasegoods(this)">
+                <div class="product__item--img img--bitis">
+                    <img src="../../image/{{this.image}}" alt="photo1" width="100%">
+                </div>
+    
+                <div class="product__size" onmouseover="turnUp(this)" onmouseout="disappear(this)">
+                    <div class="product__size--front">
+                        <span class="product__size-item">+{{size.length}} size</span>
+                    </div>
+                        <div class="product__size--back">
+                        {{#each size}}
+                            <span class="product__size-item" onclick="chooseSize(this)">{{this}}</span>
+                        {{/each}}
+                    </div>
+    
+                </div>
+                <div class="product__name">
+                    <a href="/shoes/{{this.shoes_id}}/detail">
+                            <p class="p-name">{{this.shoes_name}}</p>
+                    </a>
+                </div>
+    
+                <div class="product__price">
+                    {{this.price}}
+                </div>
+    
+                <div class="product__buy btn" onclick="addItem(this)">
+                    <button>
+                        Thêm vào giỏ hàng
+                    </button>
+                </div>
+                <div class="shoe_id">{{this.shoes_id}}</div>
+            </div>
+            {{/each}}
+    
+        </div>
+    </section>
+    <section class="section section-newletters">
+        <div class="section-title">
+            <h3 class="secondary-title"> ĐĂNG KÍ NHẬN THÔNG TIN MỚI NHẤT</h3>
+        </div>
+        <div class="NewLetters">
+            <form>
+                <input type="email" name="email" id="registerEmail" placeholder="Email của bạn">
+                <button>ĐĂNG KÍ</button>
+            </form>
+        </div>
+    </section>
+</div>
