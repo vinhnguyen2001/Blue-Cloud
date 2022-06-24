@@ -1,5 +1,5 @@
 # Blue-Cloud
-A website sells the shoe
+A website sells the shoe and manage product, orders and statistic orders, 
 
 
 # Database
