@@ -19,7 +19,7 @@ After, you type command:"npm run dev" to run this project
 ## Port
 
 * In customer's web: http://localhost:3000/
-* In admin's web: http://localhost:4000/ with default account: owner - password: 123456789
+* In admin's web: http://localhost:4000/ with default admin account: owner - password: 123456789
 
 ## Screenshot images about customer's web
 
