@@ -12,15 +12,15 @@ https://www.youtube.com/watch?v=2MSuhH5TjKU
 
 # How to run this project
 
-First of all, you have to install Postgre SQL.
-In console of VScode, you type this command: "npm install" to installl all module that project needed.
+* First of all, you have to install Postgre SQL.
+* In console of VScode, you type this command: "npm install" to installl all module that project needed.
 After, you type command:"npm run dev" to run this project
 
-# Port
+## Port
 
-In customer's web: http://localhost:3000/
-In admin's web: http://localhost:4000/ with default account: owner - password: 123456789
+* In customer's web: http://localhost:3000/
+* In admin's web: http://localhost:4000/ with default admin account: owner - password: 123456789
 
-# Screenshot images about customer's web
+## Screenshot images about customer's web
 
-# Screenshot images about admin's web
+## Screenshot images about admin's web
