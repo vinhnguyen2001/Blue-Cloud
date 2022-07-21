@@ -12,8 +12,8 @@ https://www.youtube.com/watch?v=2MSuhH5TjKU
 
 # How to run this project
 
-First of all, you have to install Postgre SQL.
-In console of VScode, you type this command: "npm install" to installl all module that project needed.
+* First of all, you have to install Postgre SQL.
+* In console of VScode, you type this command: "npm install" to installl all module that project needed.
 After, you type command:"npm run dev" to run this project
 
 # Port
