@@ -189,11 +189,24 @@ body {
 }
 
 .btn-outline-success {
-    border: none;
+    border: 0.15px solid #688dfd !important;
     background-color: #688dfd;
+    color: white;
 }
 
 .btn-outline-success:hover,
+.btn-outline-success:focus {
+    opacity: 0.9;
+    background-color: #688dfd !important;
+}
+
+.btn-outline-success:focus,
+.btn-outline-success:active {
+    transform: translateY(0.15px);
+}
+
+
+/* .btn-outline-success:hover,
 .btn-outline-success:focus,
 .btn-outline-success:active,
 .btn-outline-success:visited,
@@ -203,19 +216,7 @@ body {
     background-color: #688dfd !important;
     box-shadow: none !important;
 }
-
-.btn-outline-success:after,
-.btn-outline-success:before {
-    display: none !important;
-}
-
-
-/* .form-inline button:hover,
-.form-inline button:active,
-.form-inline button:onclick {
-    background: #688dfd;
-    border: none;
-} */
+ */
 
 .dropdown__cart {
     position: relative;

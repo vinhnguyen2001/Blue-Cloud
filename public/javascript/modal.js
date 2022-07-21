@@ -13,6 +13,8 @@ const modalNoti = ({ msg, type, duration = 3000, buy }) => {
         // Auto remove toast
         const autoRemoveId = setTimeout(function() {
             main.removeChild(modal);
+            container.style.transition = " all linear .5s";
+            header.style.transition = " all linear .5s";
             container.classList.remove("background-blur");
             header.classList.remove("background-blur");
         }, duration + 1000);
@@ -22,6 +24,8 @@ const modalNoti = ({ msg, type, duration = 3000, buy }) => {
         modal.onclick = function(e) {
             if (e.target.closest(".btn--close")) {
                 main.removeChild(modal);
+                container.style.transition = " all linear .15s";
+                header.style.transition = " all linear .15s";
                 container.classList.remove("background-blur");
                 header.classList.remove("background-blur");
                 clearTimeout(autoRemoveId);

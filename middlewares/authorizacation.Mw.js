@@ -78,14 +78,14 @@ const checkUserIsLogin = (req, res, next) => {
 };
 const checkUserIsLoginAdmin = (req, res, next) => {
 
-    const access_token = req.cookies.jwt;
+    const access_token = req.cookies.admintoken;
     if (!access_token) {
         next();
     } else if (access_token) {
 
         const token = access_token.split(' ')[1];
         if (!token) {
-            res.clearCookie("jwt");
+            res.clearCookie("admintoken");
             return res.redirect('/');
 
         }
@@ -102,7 +102,7 @@ const checkUserIsLoginAdmin = (req, res, next) => {
                 }
             });
         } catch (err) {
-            res.clearCookie("jwt");
+            res.clearCookie("admintoken");
             return res.redirect('/');
         }
 
@@ -133,7 +133,7 @@ const checkCurrentUser = (req, res, next) => {
 
 const checkAuthAdmin = (req, res, next) => {
 
-    const access_token = req.cookies.jwt;
+    const access_token = req.cookies.admintoken;
     if (!access_token) {
         res.redirect('/dangnhap');
     } else {
@@ -141,7 +141,7 @@ const checkAuthAdmin = (req, res, next) => {
         const token = access_token.split(' ')[1];
 
         if (!token) {
-            res.clearCookie("jwt");
+            res.clearCookie("admintoken");
             return res.redirect('/');
         }
         try {
@@ -157,7 +157,7 @@ const checkAuthAdmin = (req, res, next) => {
 
             });
         } catch (err) {
-            res.clearCookie("jwt");
+            res.clearCookie("admintoken");
             return res.redirect('/');
         }
         next();

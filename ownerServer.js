@@ -60,12 +60,12 @@ app.set('views', './views');
 
 // Route - Trang chủ
 app.use('/home', checkAuthAdmin, require("./controllers/Owner/Site/Site.C"));
-app.use('/', require("./controllers/Auth/logIn.C"));
+app.use('/', require("./controllers/Auth/logInOwner.C"));
 // Route - Đăng nhập
 app.use('/dangnhap', checkUserIsLoginAdmin, require("./controllers/Auth/logInOwner.C"));
 
 // Route - Đăng xuất
-app.use('/dangxuat', require("./controllers/Auth/logOut.C"));
+app.use('/dangxuat', require("./controllers/Auth/logoutOwner.C"));
 //Route - Trang quản lí sản phẩm
 app.use('/allproduct', checkAuthAdmin, require("./controllers/Owner/product.C"));
 //Route - Trang quản lí đơn hàng

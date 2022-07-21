@@ -29,9 +29,9 @@ const getToken = (req, res) => {
 router.get("/", async(req, res) => {
     const username = getToken(req, res);
 
-    let pdsNike = await getShoesById(1, 2, 3, 4, 5, 1);
-    let pdsAdidas = await getShoesById(43, 12, 13, 14, 15, 2);
-    let pdsBitis = await getShoesById(26, 29, 30, 28, 41, 3);
+    let pdsNike = await getShoesById(1, 2, 3, 20, 22, 1);
+    let pdsAdidas = await getShoesById(4, 5, 6, 10, 13, 2);
+    let pdsBitis = await getShoesById(7, 8, 9, 14, 26, 3);
 
     for (let i = 0; i < 5; i++) {
         pdsNike[i].price = priceForShow(pdsNike[i].price);

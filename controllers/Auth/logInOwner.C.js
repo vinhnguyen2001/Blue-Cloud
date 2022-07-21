@@ -108,7 +108,7 @@ router.post('/', async(req, res) => {
 
         // Lưu trữ token ở cookie
         const access_token = `Beaer ${token}`;
-        res.cookie('jwt', access_token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
+        res.cookie('admintoken', access_token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
         res.status(200).json({ status: 'success', role: dataUser[0].role_id });
 
     } catch (e) {
