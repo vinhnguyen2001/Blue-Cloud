@@ -153,14 +153,15 @@ insert into brands values (1, 'Nike'), (2, 'Adidas'), (3, 'Bitis');
 -- Thêm user mẫu
 insert into users values
 (1, 'owner01', 'Phạm Ngọc Truyền', '0123456789', '$2b$10$Vkhen5eBmVHW7KlxsemqO.tiAzjyE1poZugSaqWTJTC7OQJMn72QS', 1),
-(2, 'owner02', 'Phan Khắc Uy', '0123456789', '$2b$10$Il4SD6hazZ0HO6GlpzzzH.7dAmmV8jsHwEcs44vSa2R1AdZT.Nyke', 1),
-(3, 'customer01', 'Nguyễn Văn A', '0987654321', 'E0308DA5BBE8279ADC296567334D429B', 0),
-(4, 'customer02', 'Nguyễn Văn B', '0321654987', 'BABA9830D1E5DEAE4954C1364B536D66', 0);
+
 
 
 -- Thêm shopping cart mẫu ứng với 2 customer mẫu
-insert into carts values (1, 3), (2, 4);
+
 */
+insert into users values
+(1, 'admin', 'My Shop', '0123456789', '$2b$10$qWUsTPJj8H3/PD.gtEuhgerIZNhp6oOniuHEQsjqBmEBYmmNNftGq', 1)
+insert into carts values (1, 1);
 
 -- Thêm giày mẫu
 insert into shoes ("shoes_name","image","brand_id","size","price","stock","state")
