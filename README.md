@@ -23,9 +23,6 @@ After, you type command:"npm run dev" to run this project
 
 ## Some screenshot images about customer's web
 
-#### Homepage
-![client](https://user-images.githubusercontent.com/55630349/180169873-16def73b-56c4-428c-b2b8-6058bc3ed47c.png)
-
 ![client2](https://user-images.githubusercontent.com/55630349/180170364-1836138f-aea7-48cc-9c48-0e9ffdf7b3e9.png)
 
 ![client3](https://user-images.githubusercontent.com/55630349/180170382-2c2342c1-bc10-420e-83e2-a6b205929a6e.png)
