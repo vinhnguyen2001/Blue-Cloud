@@ -1,10 +1,6 @@
 # Blue-Cloud
-<<<<<<< HEAD
-=======
-A website sells the shoe and manage product, orders and statistic orders, 
->>>>>>> 96b2c42a104e3e423c05a5caf10e3f7aa3de036e
 
-A website sells the shoe
+This project is a website with purpose that sells and manages the shoes.
 
 # Database
 
